@@ -43,6 +43,6 @@ public class Movement : MonoBehaviour
 
         Vector3 movement = new Vector3(_moveX * _moveSpeed, 0f, _moveZ * _moveSpeed);
         _rigidBody.velocity = movement;
-        _rigidBody.rotation = Quaternion.LookRotation(_rotation);
+        if (_rotation != Vector3.zero) _rigidBody.rotation = Quaternion.LookRotation(_rotation);
     }
 }

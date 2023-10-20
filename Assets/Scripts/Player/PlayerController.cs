@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private FrameInput _frameInput;
     private Rigidbody _rigidBody;
     private Movement _movement;
+    private Shooting _shooting;
 
     public void Awake() {
         if (Instance == null) { Instance = this; }
@@ -19,11 +20,13 @@ public class PlayerController : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody>();
         _playerInput = GetComponent<PlayerInput>();
         _movement = GetComponent<Movement>();
+        _shooting = GetComponent<Shooting>();
     }
 
     private void Update() {
         GatherInput();
         Movement();
+        Shooting();
     }
 
     private void GatherInput() {
@@ -33,5 +36,9 @@ public class PlayerController : MonoBehaviour
     private void Movement() {
         _movement.SetCurrentDirection(_frameInput.Move.x, _frameInput.Move.y);
         _movement.SetCurrentRotation(_frameInput.Rotate.x, _frameInput.Rotate.y);
+    }
+
+    private void Shooting() {
+        _shooting.SetTrigger(_frameInput.Shoot);
     }
 }
