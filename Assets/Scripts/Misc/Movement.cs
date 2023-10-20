@@ -5,6 +5,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 10f;
+    [SerializeField] private float _particleTriggerSpeed = 3f;
+    [SerializeField] private Transform _movementParticles;
 
 
     private float _moveX;
@@ -43,6 +45,17 @@ public class Movement : MonoBehaviour
 
         Vector3 movement = new Vector3(_moveX * _moveSpeed, 0f, _moveZ * _moveSpeed);
         _rigidBody.velocity = movement;
+        CheckMoveParticles(movement);
         if (_rotation != Vector3.zero) _rigidBody.rotation = Quaternion.LookRotation(_rotation);
+    }
+
+    private void CheckMoveParticles(Vector3 movement) {
+        if (movement.magnitude > _particleTriggerSpeed) {
+            _movementParticles.gameObject.SetActive(true);
+            _movementParticles.eulerAngles = new Vector3(0f, Vector3.Angle(Vector3.forward, movement.normalized), 0f);
+        } else {
+            _movementParticles.gameObject.SetActive(false);
+        }
+        
     }
 }
