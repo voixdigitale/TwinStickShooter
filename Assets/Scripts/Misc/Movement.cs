@@ -50,11 +50,12 @@ public class Movement : MonoBehaviour
     }
 
     private void CheckMoveParticles(Vector3 movement) {
+        ParticleSystem particleSystem = _movementParticles.GetComponent<ParticleSystem>();
         if (movement.magnitude > _particleTriggerSpeed) {
-            _movementParticles.gameObject.SetActive(true);
+            if (!particleSystem.isPlaying) particleSystem.Play();
             _movementParticles.eulerAngles = new Vector3(0f, Vector3.Angle(Vector3.forward, movement.normalized), 0f);
         } else {
-            _movementParticles.gameObject.SetActive(false);
+            particleSystem.Stop();
         }
         
     }

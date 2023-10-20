@@ -78,6 +78,6 @@ public class Shooting : MonoBehaviour
 
     private void ShootProjectile() {
         Projectile newProjectile = _projectilePool.Get();
-        newProjectile.Init(_projectileNozzle.position, _projectileNozzle.rotation);
+        newProjectile.Init(this, _projectileNozzle.position, _projectileNozzle.rotation);
     }
 }
