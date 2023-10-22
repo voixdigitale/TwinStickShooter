@@ -58,7 +58,7 @@ public class Shooting : MonoBehaviour
             projectile.gameObject.SetActive(false); // OnRelease
         }, projectile => {
             Destroy(projectile);                    // OnDestroy
-        }, false,                                   // Vérifier la collection
+        }, false,                                   // Erreurs si on "Release" un objet dans la collection
         20,                                         // Taille du tableau pour éviter recréations
         40                                          // Taille maximale du tableau
         );
