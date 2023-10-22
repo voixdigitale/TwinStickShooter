@@ -25,8 +25,13 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        //Possibles particules en impact?
+
         IHitable iHitable = other.gameObject.GetComponent<IHitable>();
         iHitable?.TakeHit();
+
+        IDamageable iDamageable = other.gameObject.GetComponent<IDamageable>();
+        iDamageable?.TakeDamage(_damageAmount);
 
         _shooting.ReleaseProjectileFromPool(this);
     }
