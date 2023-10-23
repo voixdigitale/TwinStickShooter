@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Flash  Material
+  m_Name: Flash  Material Gray
   m_Shader: {fileID: -6465566751694194690, guid: c9589b846da8b804ea9f1fd4cdb660b7,
     type: 3}
   m_Parent: {fileID: 0}
@@ -45,7 +45,7 @@ Material:
     - _RimPower: 2.73
     - _Rim_Power: 20
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
     - _EmissionColor: {r: 2, g: 2, b: 2, a: 1}
     - _GlowColor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
   m_BuildTextureStacks: []

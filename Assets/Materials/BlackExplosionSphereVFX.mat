@@ -7,14 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Flash  Material
-  m_Shader: {fileID: -6465566751694194690, guid: c9589b846da8b804ea9f1fd4cdb660b7,
+  m_Name: BlackExplosionSphereVFX
+  m_Shader: {fileID: -6465566751694194690, guid: d49b4d6d02231574ca5b8330e42745f6,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -38,18 +38,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Enabled: 1
-    - _GlowPower: 0
+    - _FresnelPower: 5
+    - _GlowPower: 1.63
+    - _Intersect_Power: 2.02
+    - _Offset: -0.02
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RimPower: 2.73
-    - _Rim_Power: 20
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 2, g: 2, b: 2, a: 1}
-    - _GlowColor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Base_Color: {r: 0, g: 0, b: 0, a: 0.09411765}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Emission: {r: 0.52830195, g: 0.52830195, b: 0.52830195, a: 1}
+    - _GlowColor: {r: 0.6415094, g: 0.5900676, b: 0.5900676, a: 1}
+    - _Intersect_Color: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &4098642459192166803
+--- !u!114 &3889372062875382495
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
