@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: GroundVFX
+    uniqueID: 1844461539
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

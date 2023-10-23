@@ -27,6 +27,8 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         //Possibles particules en impact?
 
+        Debug.Log("HIT : " + other.gameObject.name);
+
         IHitable iHitable = other.gameObject.GetComponent<IHitable>();
         iHitable?.TakeHit();
 
