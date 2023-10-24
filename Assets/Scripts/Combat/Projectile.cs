@@ -28,10 +28,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         IHitable iHitable = other.gameObject.GetComponent<IHitable>();
-        iHitable?.TakeHit();
+        iHitable?.TakeHit(_teamId);
 
         IDamageable iDamageable = other.gameObject.GetComponent<IDamageable>();
-        iDamageable?.TakeDamage(_damageAmount);
+        iDamageable?.TakeDamage(_teamId, _damageAmount);
 
         _shooting.ReleaseProjectileFromPool(this);
     }

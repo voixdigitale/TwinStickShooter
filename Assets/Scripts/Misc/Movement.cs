@@ -52,7 +52,7 @@ public class Movement : MonoBehaviour
     }
 
     private void Rotate() {
-        if (_targetLock != null && !_targetLock.IsEnabled()) {
+        if (_targetLock != null && !_targetLock.IsEnabled() || _targetLock.CurrentTarget == null) {
             if (_rotation != Vector3.zero)
                 _rigidBody.rotation = Quaternion.LookRotation(_rotation);
         } else {
@@ -62,9 +62,9 @@ public class Movement : MonoBehaviour
 
     private void RotateWithTargetLock() {
         Transform currentTarget = _targetLock.CurrentTarget;
-        Vector3 newDirection = currentTarget.position - _rigidBody.position;
+        _rotation = currentTarget.position - _rigidBody.position;
 
-        _rigidBody.rotation = Quaternion.LookRotation(newDirection, Vector3.up);
+        _rigidBody.rotation = Quaternion.LookRotation(_rotation, Vector3.up);
     }
 
     private void CheckMoveParticles(Vector3 movement) {

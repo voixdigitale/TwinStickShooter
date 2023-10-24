@@ -1,3 +1,3 @@
 public interface IHitable {
-    void TakeHit();
+    void TakeHit(int teamId);
 }

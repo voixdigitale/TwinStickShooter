@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update() {
         GatherInput();
+        TargetLock();
         Movement();
         Shooting();
-        TargetLock();
     }
 
     private void GatherInput() {

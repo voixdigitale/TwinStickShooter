@@ -6,6 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public GameObject DeathVFXPrefab => _deathVFXPrefab;
+    public int GetTeamId => _teamId;
 
     public static Action<Health> OnDeath;
 

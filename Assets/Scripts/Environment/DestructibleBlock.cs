@@ -12,15 +12,15 @@ public class DestructibleBlock : MonoBehaviour, IDamageable
         _health = GetComponent<Health>();
     }
 
-    public void TakeHit() {
-        _flash.StartFlash();
+    public void TakeHit(int teamId) {
+        if (teamId != _health.GetTeamId) {
+            _flash.StartFlash();
+        }
     }
 
-    public void TakeDamage(int damageAmount) {
-        _health.ReduceHealth(damageAmount);
-    }
-
-    public int GetTeamId() {
-        return -1;
+    public void TakeDamage(int teamId, int damageAmount) {
+        if (teamId != _health.GetTeamId) {
+            _health.ReduceHealth(damageAmount);
+        }
     }
 }
