@@ -155,6 +155,7 @@ MonoBehaviour:
   _deathVFXPrefab: {fileID: 7017344864541426011, guid: 3bedcbf0b4facc24fae991835114c777,
     type: 3}
   _startingHealth: 4
+  _teamId: 0
 --- !u!114 &5266789642897329978
 MonoBehaviour:
   m_ObjectHideFlags: 0

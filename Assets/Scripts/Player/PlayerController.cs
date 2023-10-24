@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rigidBody;
     private Movement _movement;
     private Shooting _shooting;
+    private TargetLock _targetLock;
 
     public void Awake() {
         if (Instance == null) { Instance = this; }
@@ -21,12 +22,14 @@ public class PlayerController : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         _movement = GetComponent<Movement>();
         _shooting = GetComponent<Shooting>();
+        _targetLock = GetComponent<TargetLock>();
     }
 
     private void Update() {
         GatherInput();
         Movement();
         Shooting();
+        TargetLock();
     }
 
     private void GatherInput() {
@@ -40,5 +43,10 @@ public class PlayerController : MonoBehaviour
 
     private void Shooting() {
         _shooting.SetTrigger(_frameInput.Shoot);
+    }
+
+    private void TargetLock() {
+        if (_frameInput.TargetLock)
+            _targetLock.Trigger();
     }
 }

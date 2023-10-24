@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Pool;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
@@ -89,7 +91,9 @@ public class AudioManager : MonoBehaviour
         if (!loop) { StartCoroutine(ReleaseSoundFromPool(soundObject, clip.length)); }
     }
 
-    private void Shooting_OnShoot() {
-        PlayRandomSound(_soundsCollectionSO.PlayerShoot);
+    private void Shooting_OnShoot(Shooting sender) {
+        if (sender.gameObject.CompareTag("Player")) {
+            PlayRandomSound(_soundsCollectionSO.PlayerShoot);
+        }
     }
 }

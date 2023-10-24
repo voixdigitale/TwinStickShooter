@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] private GameObject _deathVFXPrefab;
     [SerializeField] private int _startingHealth = 4;
+    [SerializeField] private int _teamId;
 
     private int _currentHealth;
 

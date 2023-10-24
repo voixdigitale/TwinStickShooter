@@ -19,4 +19,8 @@ public class DestructibleBlock : MonoBehaviour, IDamageable
     public void TakeDamage(int damageAmount) {
         _health.ReduceHealth(damageAmount);
     }
+
+    public int GetTeamId() {
+        return -1;
+    }
 }

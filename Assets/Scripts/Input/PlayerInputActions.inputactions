@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Target Lock",
+                    "type": "Button",
+                    "id": "c3fcf8d7-1ff8-4c5d-90b2-d1f887ff7b3f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -168,8 +177,8 @@
                 },
                 {
                     "name": "",
-                    "id": "b61ab89b-755d-4716-b338-c45865fa8682",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "bfc3f1e0-8687-48a2-85b0-a62b8e0908ae",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -179,12 +188,34 @@
                 },
                 {
                     "name": "",
-                    "id": "bfc3f1e0-8687-48a2-85b0-a62b8e0908ae",
-                    "path": "<Keyboard>/space",
+                    "id": "28e61866-bab5-49d6-bf3f-d729425daf6f",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19b3add3-15fb-49e1-8089-68183713d0c4",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Target Lock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd048d9b-5274-4e22-9cc6-f37c3634c172",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Target Lock",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,11 +1,15 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.Android;
 using UnityEngine.Pool;
 
 public class Shooting : MonoBehaviour
 {
-    public static Action OnShoot;
+    public static Action<Shooting> OnShoot;
 
+    [SerializeField] private int _teamId = 0;
     [SerializeField] private Transform _projectileNozzle;
     [SerializeField] private float _shootCoolDown = .5f;
     [SerializeField] private Projectile _projectilePrefab;
@@ -14,6 +18,10 @@ public class Shooting : MonoBehaviour
     private float _lastFireTime = 0f;
     private bool _isShooting;
     private bool _canShoot = true;
+    private Shooting _instance;
+    private int counter = 0;
+
+    public int GetTeamId() => _teamId;
 
     private void OnEnable() {
         OnShoot += ShootProjectile;
@@ -23,10 +31,10 @@ public class Shooting : MonoBehaviour
     private void OnDisable() {
         OnShoot -= ShootProjectile;
         OnShoot -= ResetLastFireTime;
-
     }
 
     private void Start() {
+        _instance = this;
         CreateBulletPool();
     }
 
@@ -34,10 +42,10 @@ public class Shooting : MonoBehaviour
         Shoot();
     }
 
-    private void AllowShoot() {
+    public void AllowShoot() {
         _canShoot = true;
     }
-    private void PreventShoot() {
+    public void PreventShoot() {
         _canShoot = false;
     }
 
@@ -68,16 +76,20 @@ public class Shooting : MonoBehaviour
         if (!_canShoot) { return; }
 
         if (_isShooting && Time.time >= _lastFireTime) {
-            OnShoot?.Invoke();
+            OnShoot?.Invoke(this);
         }
     }
 
-    private void ResetLastFireTime() {
+    private void ResetLastFireTime(Shooting sender) {
+        if (_instance != sender) return;
+
         _lastFireTime = Time.time + _shootCoolDown;
     }
 
-    private void ShootProjectile() {
+    private void ShootProjectile(Shooting sender) {
+        if (_instance != sender) return;
+
         Projectile newProjectile = _projectilePool.Get();
-        newProjectile.Init(this, _projectileNozzle.position, _projectileNozzle.rotation);
+        newProjectile.Init(this, _teamId, _projectileNozzle.position, _projectileNozzle.rotation);
     }
 }

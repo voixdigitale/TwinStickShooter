@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody _rigidBody;
     private Shooting _shooting;
+    private int _teamId;
 
     private void Awake() {
         _rigidBody = GetComponent<Rigidbody>();
@@ -18,17 +19,14 @@ public class Projectile : MonoBehaviour
         _rigidBody.velocity = _rigidBody.transform.forward * _moveSpeed;
     }
 
-    public void Init(Shooting shooting, Vector3 projectileSpawnPos, Quaternion projectileRotation) {
+    public void Init(Shooting shooting, int teamId, Vector3 projectileSpawnPos, Quaternion projectileRotation) {
         transform.position = projectileSpawnPos;
         transform.rotation = projectileRotation;
         _shooting = shooting;
+        _teamId = teamId;
     }
 
     private void OnTriggerEnter(Collider other) {
-        //Possibles particules en impact?
-
-        Debug.Log("HIT : " + other.gameObject.name);
-
         IHitable iHitable = other.gameObject.GetComponent<IHitable>();
         iHitable?.TakeHit();
 

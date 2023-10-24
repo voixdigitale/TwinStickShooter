@@ -15,9 +15,11 @@ public class Movement : MonoBehaviour
     private bool _canMove = true;
 
     private Rigidbody _rigidBody;
+    private TargetLock _targetLock;
 
     private void Awake() {
         _rigidBody = GetComponent<Rigidbody>();
+        _targetLock = GetComponent<TargetLock>();
     }
     private void AllowMove() {
         _canMove = true;
@@ -28,6 +30,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate() {
         Move();
+        Rotate();
     }
 
     public void SetCurrentDirection(float currentXDirection, float currentZDirection) {
@@ -46,7 +49,22 @@ public class Movement : MonoBehaviour
         Vector3 movement = new Vector3(_moveX * _moveSpeed, 0f, _moveZ * _moveSpeed);
         _rigidBody.velocity = movement;
         CheckMoveParticles(movement);
-        if (_rotation != Vector3.zero) _rigidBody.rotation = Quaternion.LookRotation(_rotation);
+    }
+
+    private void Rotate() {
+        if (_targetLock != null && !_targetLock.IsEnabled()) {
+            if (_rotation != Vector3.zero)
+                _rigidBody.rotation = Quaternion.LookRotation(_rotation);
+        } else {
+            RotateWithTargetLock();
+        }
+    }
+
+    private void RotateWithTargetLock() {
+        Transform currentTarget = _targetLock.CurrentTarget;
+        Vector3 newDirection = currentTarget.position - _rigidBody.position;
+
+        _rigidBody.rotation = Quaternion.LookRotation(newDirection, Vector3.up);
     }
 
     private void CheckMoveParticles(Vector3 movement) {

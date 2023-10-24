@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     private InputAction _move;
     private InputAction _rotate;
     private InputAction _shoot;
+    private InputAction _targetLock;
 
 
     private void Awake() {
@@ -19,6 +20,7 @@ public class PlayerInput : MonoBehaviour
         _move = _playerInputActions.Player.Move;
         _rotate = _playerInputActions.Player.Rotate;
         _shoot = _playerInputActions.Player.Shoot;
+        _targetLock = _playerInputActions.Player.TargetLock;
     }
 
     private void OnEnable() {
@@ -38,6 +40,7 @@ public class PlayerInput : MonoBehaviour
             Move = _move.ReadValue<Vector2>(),
             Rotate = _rotate.ReadValue<Vector2>(),
             Shoot = _shoot.ReadValue<float>() > 0,
+            TargetLock = _targetLock.ReadValue<float>() > 0,
         };
     }
 }
@@ -46,4 +49,5 @@ public struct FrameInput {
     public Vector2 Move;
     public Vector2 Rotate;
     public bool Shoot;
+    public bool TargetLock;
 }

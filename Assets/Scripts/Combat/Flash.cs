@@ -17,6 +17,7 @@ public class Flash : MonoBehaviour
             _objectRenderer.material.SetFloat("_GlowPower", shininess - _offSpeed);
         } else {
             _objectRenderer.material.SetFloat("_GlowPower", 0);
+            _objectRenderer.material.SetInt("_Enable", 0);
             _isFlashing = false;
         }
     }
@@ -24,6 +25,7 @@ public class Flash : MonoBehaviour
     public void StartFlash() {
         if (!_isFlashing) {
             _objectRenderer.material.SetFloat("_GlowPower", 2f);
+            _objectRenderer.material.SetInt("_Enable", 1);
             _isFlashing = true;
         }
     }
