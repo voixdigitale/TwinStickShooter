@@ -11,10 +11,10 @@ public class GamepadManager : MonoBehaviour
         _gamepad = Gamepad.current;
     }
 
-    public void Vibrate() {
+    public void Vibrate(float duration = .25f) {
         if (_gamepad != null) {
             _gamepad.SetMotorSpeeds(0.123f, 0.234f);
-            StartCoroutine(VibrationHandler(.25f));
+            StartCoroutine(VibrationHandler(duration));
         }
     }
 
