@@ -13,7 +13,7 @@ public class PlayerHitHandler : MonoBehaviour, IDamageable
     [SerializeField] private GameObject _playerLeftSide;
 
     private Health _health;
-    private float _colorChangeDelay = .5f;
+    private float _colorChangeDelay = .25f;
 
     private void Awake() {
         _health = GetComponent<Health>();
@@ -32,6 +32,7 @@ public class PlayerHitHandler : MonoBehaviour, IDamageable
         if (_health.IsInvulnerable) return;
 
         if (teamId != _health.GetTeamId) {
+            Health.OnHit?.Invoke(_health, gameObject.tag);
             TurnBlack();
             _hitVFX.SetActive(true);
             _health.EnableInvulnerability();

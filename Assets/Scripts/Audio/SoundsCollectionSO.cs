@@ -8,5 +8,9 @@ public class SoundsCollectionSO : ScriptableObject {
 
     [Header("SFX")]
     public SoundSO[] PlayerShoot;
-    public SoundSO[] EnemyDeathSFX;
+    public SoundSO[] PlayerDeath;
+    public SoundSO[] PlayerHit;
+    public SoundSO[] EnemyDeath;
+    public SoundSO[] EnemyHit;
+    public SoundSO[] EnemyShoot;
 }

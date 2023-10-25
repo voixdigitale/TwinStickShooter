@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GamepadManager : MonoBehaviour
-{
+public class GamepadManager : MonoBehaviour {
     private Gamepad _gamepad;
 
     private void Awake() {
@@ -22,5 +21,14 @@ public class GamepadManager : MonoBehaviour
         yield return new WaitForSeconds(length);
 
         _gamepad.SetMotorSpeeds(0, 0);
+    }
+
+    void OnApplicationQuit() {
+        _gamepad.SetMotorSpeeds(0, 0);
+    }
+
+    private void OnApplicationPause(bool pause) {
+        if (pause)
+            _gamepad.SetMotorSpeeds(0, 0);
     }
 }

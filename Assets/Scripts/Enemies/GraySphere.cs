@@ -12,12 +12,18 @@ public class GraySphere : MonoBehaviour, IEnemy
     private Flash _flash;
     private Health _health;
     private Shooting _shooting;
+    private Movement _movement;
     private int _currentWaypoint;
+
+    private Transform _player;
 
     private void Awake() {
         _flash = GetComponent<Flash>();
         _health = GetComponent<Health>();
         _shooting = GetComponent<Shooting>();
+        _movement = GetComponent<Movement>();
+
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Start() {
@@ -27,12 +33,15 @@ public class GraySphere : MonoBehaviour, IEnemy
     }
 
     private void Update() {
-        Moving();
+        Movement();
         Shooting();
     }
 
     public void TakeHit(int teamId) {
-        if (teamId != _health.GetTeamId) _flash.StartFlash();
+        if (teamId != _health.GetTeamId) {
+            Health.OnHit?.Invoke(_health, gameObject.tag);
+            _flash.StartFlash();
+        }
     }
 
     public void TakeDamage(int teamId, int damageAmount) {
@@ -40,8 +49,12 @@ public class GraySphere : MonoBehaviour, IEnemy
     }
 
     // Start is called before the first frame update
-    public void Moving() {
-        transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
+    public void Movement() {
+        float dirX = _player.position.x - transform.position.x;
+        float dirZ = _player.position.z - transform.position.z;
+
+        _movement.SetCurrentDirection(dirX, dirZ);
+        transform.LookAt(_player.position);
     }
 
     public void Shooting() {

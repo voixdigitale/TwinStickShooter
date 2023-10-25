@@ -21,10 +21,14 @@ public class AudioManager : MonoBehaviour
 
     private void OnEnable() {
         Shooting.OnShoot += Shooting_OnShoot;
+        Health.OnDeath += Health_OnDeath;
+        Health.OnHit += Health_OnHit;
     }
 
     private void OnDisable() {
         Shooting.OnShoot -= Shooting_OnShoot;
+        Health.OnDeath -= Health_OnDeath;
+        Health.OnHit -= Health_OnHit;
     }
 
     private void CreateSoundObjectPool() {
@@ -94,6 +98,40 @@ public class AudioManager : MonoBehaviour
     private void Shooting_OnShoot(Shooting sender) {
         if (sender.gameObject.CompareTag("Player")) {
             PlayRandomSound(_soundsCollectionSO.PlayerShoot);
+        } else {
+            PlayRandomSound(_soundsCollectionSO.EnemyShoot);
+        }
+    }
+
+    private void Health_OnDeath(Health sender, string tag) {
+        switch (tag) {
+            case "Player":
+                PlayRandomSound(_soundsCollectionSO.PlayerDeath);
+                break;
+
+            case "Enemy":
+                PlayRandomSound(_soundsCollectionSO.EnemyDeath);
+                break;
+
+            default:
+                Debug.LogWarning("No SOUND FOR THAT SHIT");
+                break;
+        }
+    }
+
+    private void Health_OnHit(Health sender, string tag) {
+        switch (tag) {
+            case "Player":
+                PlayRandomSound(_soundsCollectionSO.PlayerHit);
+                break;
+
+            case "Enemy":
+                PlayRandomSound(_soundsCollectionSO.EnemyHit);
+                break;
+
+            default:
+                Debug.LogWarning("No SOUND FOR THAT SHIT");
+                break;
         }
     }
 }

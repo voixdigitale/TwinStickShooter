@@ -75,7 +75,7 @@ public class TargetLock : MonoBehaviour
         _isCoolingDown = false;
     }
 
-    private void CheckTargetDeath(Health sender) {
+    private void CheckTargetDeath(Health sender, string tag) {
         if (sender.transform == _currentTarget) {
             _currentTarget = null;
             if (!NextTarget()) {

@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa28e7573a52a9649b0f6381c178f3c7, type: 3}
   m_Name: Sounds Collection
   m_EditorClassIdentifier: 
-  Level1Music: []
+  Level1Music:
+  - {fileID: 11400000, guid: 44ba43332385924458e9b598aa38cf04, type: 2}
   PlayerShoot:
   - {fileID: 11400000, guid: 147ad667b485b91408bcae950a118561, type: 2}
-  EnemyDeathSFX: []
+  PlayerDeath:
+  - {fileID: 11400000, guid: cbfb3ac8698d5db43aafca6dfb1101bc, type: 2}
+  PlayerHit:
+  - {fileID: 11400000, guid: 16843dc6916c6eb4d9533cef26807408, type: 2}
+  - {fileID: 11400000, guid: 3cb0ab580a17cfd4d9a15ec28190e013, type: 2}
+  EnemyDeath:
+  - {fileID: 11400000, guid: 1867f729bd61ec84192eee767cce4956, type: 2}
+  EnemyHit:
+  - {fileID: 11400000, guid: d54112f33ff512c4a9e4bb2e57cd7440, type: 2}
+  EnemyShoot:
+  - {fileID: 11400000, guid: 8ebe1c27e4d1849459faa1b3c90a9c2c, type: 2}

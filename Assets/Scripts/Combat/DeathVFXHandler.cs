@@ -16,7 +16,7 @@ public class DeathVFXHandler : MonoBehaviour
         Health.OnDeath -= SpawnDeathVFX;
     }
 
-    private void SpawnDeathVFX(Health sender) {
+    private void SpawnDeathVFX(Health sender, string tag) {
         Instantiate(sender.DeathVFXPrefab, sender.transform.position, sender.transform.rotation);
         CinemachineImpulseSource _shakeImpulse = sender.DeathVFXPrefab.GetComponent<CinemachineImpulseSource>();
         if (_shakeImpulse != null ) {

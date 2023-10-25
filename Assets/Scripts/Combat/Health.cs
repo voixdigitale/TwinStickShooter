@@ -13,7 +13,8 @@ public class Health : MonoBehaviour
     public void EnableInvulnerability() => _isInvulnerable = true;
     public void DisableInvulnerability() => _isInvulnerable = false;
 
-    public static Action<Health> OnDeath;
+    public static Action<Health, string> OnDeath;
+    public static Action<Health, string> OnHit;
 
     [SerializeField] private GameObject _deathVFXPrefab;
     [SerializeField] private int _startingHealth = 4;
@@ -36,7 +37,7 @@ public class Health : MonoBehaviour
         _currentHealth -= amount;
 
         if (_currentHealth <= 0) {
-            OnDeath?.Invoke(this);
+            OnDeath?.Invoke(this, gameObject.tag);
             Destroy(gameObject);
         }
     }

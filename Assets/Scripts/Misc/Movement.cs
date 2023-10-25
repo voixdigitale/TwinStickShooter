@@ -48,7 +48,7 @@ public class Movement : MonoBehaviour
 
         Vector3 movement = new Vector3(_moveX * _moveSpeed, 0f, _moveZ * _moveSpeed);
         _rigidBody.velocity = movement;
-        CheckMoveParticles(movement);
+        if (_movementParticles != null) CheckMoveParticles(movement);
     }
 
     private void Rotate() {

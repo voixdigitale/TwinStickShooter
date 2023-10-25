@@ -73,10 +73,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5124642647322033645}
   - component: {fileID: 1204348144719376755}
+  - component: {fileID: 3622808338470190532}
   - component: {fileID: 240643558037158040}
+  - component: {fileID: 2165047404367800491}
   - component: {fileID: 2845078885388783641}
   - component: {fileID: 1581434726502975007}
   - component: {fileID: 4444652638371273586}
+  - component: {fileID: 5095264084383909998}
   m_Layer: 6
   m_Name: SphereEnemy
   m_TagString: Enemy
@@ -122,6 +125,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!54 &3622808338470190532
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921257179547549892}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!114 &240643558037158040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +169,21 @@ MonoBehaviour:
   _shootCoolDown: 0.7
   _projectilePrefab: {fileID: 8073159383723829718, guid: fcffa3bfd5acdcf44a4f2d0f6bb4d865,
     type: 3}
+--- !u!114 &2165047404367800491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921257179547549892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda2aa68abaecb545aa8db96d2693028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 1
+  _particleTriggerSpeed: 3
+  _movementParticles: {fileID: 0}
 --- !u!114 &2845078885388783641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +199,9 @@ MonoBehaviour:
   _deathVFXPrefab: {fileID: 1128771400534737002, guid: d05f7d778f4bc774186b8eb2cccdf4b9,
     type: 3}
   _startingHealth: 5
+  _currentHealth: 0
+  _isInvulnerable: 0
+  _invulnerabilityDuration: 0
   _teamId: 0
 --- !u!114 &1581434726502975007
 MonoBehaviour:
@@ -185,6 +233,21 @@ MonoBehaviour:
   _speed: 0
   _waypoints: []
   _startDelay: 0.5
+--- !u!114 &5095264084383909998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921257179547549892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f604e8ce48cac4e90bd20e30a10667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _lockCooldown: 0.5
+  _currentTarget: {fileID: 0}
 --- !u!1 &9156522469361361022
 GameObject:
   m_ObjectHideFlags: 0
