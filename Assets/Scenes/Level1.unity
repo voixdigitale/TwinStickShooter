@@ -6175,6 +6175,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackBlock (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1125970651642058550, guid: a3c54c348f30af849b18a8852b23b00f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4787185512224758457, guid: a3c54c348f30af849b18a8852b23b00f,
         type: 3}
       propertyPath: m_LocalPosition.x
