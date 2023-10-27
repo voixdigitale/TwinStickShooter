@@ -112,10 +112,6 @@ public class AudioManager : MonoBehaviour
             case "Enemy":
                 PlayRandomSound(_soundsCollectionSO.EnemyDeath);
                 break;
-
-            default:
-                Debug.LogWarning("No SOUND FOR THAT SHIT");
-                break;
         }
     }
 
@@ -127,10 +123,6 @@ public class AudioManager : MonoBehaviour
 
             case "Enemy":
                 PlayRandomSound(_soundsCollectionSO.EnemyHit);
-                break;
-
-            default:
-                Debug.LogWarning("No SOUND FOR THAT SHIT");
                 break;
         }
     }

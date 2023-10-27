@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -7,7 +8,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _moveSpeed = 10f;
     [SerializeField] private float _particleTriggerSpeed = 3f;
     [SerializeField] private Transform _movementParticles;
-
 
     private float _moveX;
     private float _moveZ;

@@ -1,68 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GraySphere : MonoBehaviour, IEnemy
-{
-    [SerializeField] private int _speed;
-    [SerializeField] private Transform[] _waypoints;
-    [SerializeField] private float _startDelay = .5f;
+public class GraySphere : Enemy, IEnemy {
 
-    private Flash _flash;
-    private Health _health;
-    private Shooting _shooting;
-    private Movement _movement;
-    private int _currentWaypoint;
+    [SerializeField] private bool _invertX;
+    [SerializeField] private bool _invertY;
+    [SerializeField] private Vector2 _distance;
+    [SerializeField] private Vector2 _movementFrequency;
+    [SerializeField] private bool _lookAtPlayer;
 
-    private Transform _player;
+    private Vector3 _movePosition;
 
-    private void Awake() {
-        _flash = GetComponent<Flash>();
-        _health = GetComponent<Health>();
-        _shooting = GetComponent<Shooting>();
-        _movement = GetComponent<Movement>();
+    protected override void OnStart() {
+        base.OnStart();
 
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (_lookAtPlayer) _targetLock.SetTarget(_player.transform);
     }
 
-    private void Start() {
-        _currentWaypoint = 0;
-        _shooting.PreventShoot();
-        StartCoroutine(StartDelay(_startDelay));
-    }
+    public override void Movement() {
+        if (_targetLock.CurrentTarget == null) return;
 
-    private void Update() {
-        Movement();
-        Shooting();
-    }
-
-    public void TakeHit(int teamId) {
-        if (teamId != _health.GetTeamId) {
-            Health.OnHit?.Invoke(_health, gameObject.tag);
-            _flash.StartFlash();
-        }
-    }
-
-    public void TakeDamage(int teamId, int damageAmount) {
-        if (teamId != _health.GetTeamId) _health.ReduceHealth(damageAmount);
-    }
-
-    // Start is called before the first frame update
-    public void Movement() {
-        float dirX = _player.position.x - transform.position.x;
-        float dirZ = _player.position.z - transform.position.z;
+        float dirX = _invertX ? Mathf.Cos(Time.time * _movementFrequency.x) * _distance.x : Mathf.Sin(Time.time * _movementFrequency.x) * _distance.x;
+        float dirZ = _invertY ? Mathf.Cos(Time.time * _movementFrequency.y) * _distance.y : Mathf.Sin(Time.time * _movementFrequency.y) * _distance.y;
 
         _movement.SetCurrentDirection(dirX, dirZ);
-        transform.LookAt(_player.position);
-    }
-
-    public void Shooting() {
-        _shooting.SetTrigger(true);
-    }
-
-    private IEnumerator StartDelay(float startDelay) {
-        yield return new WaitForSeconds(startDelay);
-        _shooting.AllowShoot();
     }
 }

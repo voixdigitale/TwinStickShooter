@@ -279,6 +279,7 @@ MonoBehaviour:
   _moveSpeed: 10
   _particleTriggerSpeed: 3
   _movementParticles: {fileID: 8029097507466317607}
+  _isPlayer: 1
 --- !u!114 &6933609044364877483
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 4524860654025877848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96,7 +96,7 @@ Transform:
   m_GameObject: {fileID: 7921257179547549892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -167,7 +167,7 @@ MonoBehaviour:
   _teamId: 0
   _projectileNozzle: {fileID: 9186448310197557288}
   _shootCoolDown: 0.7
-  _projectilePrefab: {fileID: 8073159383723829718, guid: fcffa3bfd5acdcf44a4f2d0f6bb4d865,
+  _projectilePrefab: {fileID: 8073159383723829718, guid: a68afc85e50a9a044ad7b21d1e513826,
     type: 3}
 --- !u!114 &2165047404367800491
 MonoBehaviour:
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda2aa68abaecb545aa8db96d2693028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 1
+  _moveSpeed: 5
   _particleTriggerSpeed: 3
   _movementParticles: {fileID: 0}
 --- !u!114 &2845078885388783641
@@ -230,9 +230,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1e38ac7e097ad459cfe1cb4662acfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
-  _waypoints: []
   _startDelay: 0.5
+  _invertX: 0
+  _invertY: 0
+  _distance: {x: 2, y: 0}
+  _movementFrequency: {x: 2, y: 0}
+  _lookAtPlayer: 1
 --- !u!114 &5095264084383909998
 MonoBehaviour:
   m_ObjectHideFlags: 0

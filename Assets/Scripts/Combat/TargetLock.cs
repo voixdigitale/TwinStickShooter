@@ -35,6 +35,14 @@ public class TargetLock : MonoBehaviour
         return true;
     }
 
+    public void SetTarget(Transform target) {
+        _currentTarget = target;
+    }
+
+    public void ClearTarget() {
+        _currentTarget = null;
+    }
+
     public void CheckForEnemies() {
         _closeEnemies = Physics.OverlapSphere(transform.position, _radarRadius, 1 << _enemyLayerMask);
     }

@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     public float InvulnerabilityDuration => _invulnerabilityDuration;
     public bool IsInvulnerable => _isInvulnerable;
     public int CurrentHealth => _currentHealth;
+    public bool TriggersSpawn => _triggersSpawn;
+    public int SpawnNumber => _spawnNumber;
     public void EnableInvulnerability() => _isInvulnerable = true;
     public void DisableInvulnerability() => _isInvulnerable = false;
 
@@ -22,6 +24,10 @@ public class Health : MonoBehaviour
     [SerializeField] private bool _isInvulnerable = false;
     [SerializeField] private float _invulnerabilityDuration;
     [SerializeField] private int _teamId;
+    
+    
+    private bool _triggersSpawn = false;
+    private int _spawnNumber;
 
     private void Start() {
         ResetHealth();
@@ -31,6 +37,11 @@ public class Health : MonoBehaviour
         _currentHealth = _startingHealth;
     }
 
+    public void SetSpawnOnDeath(int spawnNumber) {
+        _triggersSpawn = true;
+        _spawnNumber = spawnNumber;
+    }
+
     public void ReduceHealth(int amount) {
         if (_isInvulnerable) return;
 
@@ -38,6 +49,7 @@ public class Health : MonoBehaviour
 
         if (_currentHealth <= 0) {
             OnDeath?.Invoke(this, gameObject.tag);
+            if (_triggersSpawn) GameEvents.current.CheckPointEnter(_spawnNumber);
             Destroy(gameObject);
         }
     }
