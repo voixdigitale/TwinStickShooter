@@ -5,7 +5,10 @@ using UnityEngine;
 public class MagicWall : MonoBehaviour
 {
     [SerializeField] private int _checkPointChannel = 0;
+    [SerializeField] private int _checkPointsNeeded = 1;
     [SerializeField] private GameObject _disappearVFX;
+
+    private int _checkPointsTriggered = 0;
 
     private void OnEnable() {
         GameEvents.OnCheckPointEnter += CheckDisappearing;
@@ -17,6 +20,9 @@ public class MagicWall : MonoBehaviour
 
     private void CheckDisappearing(int checkPointNum) {
         if (checkPointNum == _checkPointChannel) {
+            _checkPointsTriggered++;
+
+            if (_checkPointsTriggered < _checkPointsNeeded) return;
             StartCoroutine(Disappear());
         }
     }

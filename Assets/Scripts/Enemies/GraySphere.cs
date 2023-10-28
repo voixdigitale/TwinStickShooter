@@ -8,6 +8,7 @@ public class GraySphere : Enemy, IEnemy {
     [SerializeField] private Vector2 _distance;
     [SerializeField] private Vector2 _movementFrequency;
     [SerializeField] private bool _lookAtPlayer;
+    [SerializeField] private float _rotationSpeed;
 
     private Vector3 _movePosition;
 
@@ -18,6 +19,8 @@ public class GraySphere : Enemy, IEnemy {
     }
 
     public override void Movement() {
+        _rigidBody.rotation = Quaternion.Euler(0f, _rotationSpeed * Time.time, 0f);
+
         if (_targetLock.CurrentTarget == null) return;
 
         float dirX = _invertX ? Mathf.Cos(Time.time * _movementFrequency.x) * _distance.x : Mathf.Sin(Time.time * _movementFrequency.x) * _distance.x;

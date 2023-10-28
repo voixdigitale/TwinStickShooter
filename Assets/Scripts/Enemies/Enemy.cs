@@ -9,18 +9,20 @@ public abstract class Enemy : MonoBehaviour, IEnemy
 
     protected Flash _flash;
     protected Health _health;
-    protected Shooting _shooting;
+    protected Shooting[] _shooting;
     protected Movement _movement;
     protected TargetLock _targetLock;
 
     protected Transform _player;
+    protected Rigidbody _rigidBody;
 
     private void Awake() {
         _flash = GetComponent<Flash>();
         _health = GetComponent<Health>();
-        _shooting = GetComponent<Shooting>();
+        _shooting = GetComponents<Shooting>();
         _movement = GetComponent<Movement>();
         _targetLock = GetComponent<TargetLock>();
+        _rigidBody = GetComponent<Rigidbody>();
 
         _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -38,7 +40,10 @@ public abstract class Enemy : MonoBehaviour, IEnemy
     }
 
     protected virtual void OnStart() {
-        _shooting.PreventShoot();
+        foreach(Shooting shooting in _shooting) {
+            shooting.PreventShoot();
+        }
+        
         StartCoroutine(StartDelay(_startDelay));
     }
 
@@ -62,12 +67,14 @@ public abstract class Enemy : MonoBehaviour, IEnemy
     public abstract void Movement();
 
     public virtual void Shooting() {
-        _shooting.SetTrigger(true);
+        foreach (Shooting shooting in _shooting)
+            shooting.SetTrigger(true);
     }
 
     private IEnumerator StartDelay(float startDelay) {
         yield return new WaitForSeconds(startDelay);
-        _shooting.AllowShoot();
+        foreach (Shooting shooting in _shooting)
+            shooting.AllowShoot();
     }
 
     private void Health_OnDeath(Health sender, string tag) {

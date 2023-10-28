@@ -5,12 +5,15 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private int _checkPointChannel = 0;
+    [SerializeField] private int _checkPointsNeeded = 1;
     [SerializeField] private float _spawnDelay = 0f;
     [SerializeField] private GameObject _spawnVFX;
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private Transform _enemyContainer;
     [SerializeField] private bool _triggersSpawnOnDeath;
     [SerializeField] private int _spawnChannel;
+
+    private int _checkPointsTriggered = 0;
 
     private void OnEnable() {
         GameEvents.OnCheckPointEnter += CheckSpawning;
@@ -22,6 +25,10 @@ public class Spawner : MonoBehaviour
 
     private void CheckSpawning(int checkPointNum) {
         if (checkPointNum == _checkPointChannel) {
+            _checkPointsTriggered++;
+
+            if (_checkPointsTriggered < _checkPointsNeeded) return;
+            
             StartCoroutine(PrepareSpawn(_spawnDelay));
         }
     }

@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _checkPointChannel: 0
   _spawnDelay: 0
-  _spawnVFX: {fileID: 0}
+  _spawnVFX: {fileID: 5675011705632677765, guid: bac9153a3f188a246be9a76e0243d3d9,
+    type: 3}
   _enemyPrefab: {fileID: 8029568025822335852, guid: 190e8f2f2e00bbe46911947eaabddee6,
     type: 3}
   _enemyContainer: {fileID: 0}

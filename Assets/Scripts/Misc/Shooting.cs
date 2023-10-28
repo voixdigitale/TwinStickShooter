@@ -1,8 +1,5 @@
 using System;
-using System.Runtime.InteropServices.WindowsRuntime;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.Android;
 using UnityEngine.Pool;
 
 public class Shooting : MonoBehaviour
