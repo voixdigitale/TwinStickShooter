@@ -51,6 +51,9 @@ public class Health : MonoBehaviour
             OnDeath?.Invoke(this, gameObject.tag);
             if (_triggersSpawn) GameEvents.current.CheckPointEnter(_spawnNumber);
             Destroy(gameObject);
+            if (gameObject.CompareTag("Player")) {
+                GameManager.instance.GameOver();
+            }
         }
     }
 }
