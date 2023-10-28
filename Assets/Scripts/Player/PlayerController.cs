@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         TargetLock();
         Movement();
         Shooting();
+        Pause();
     }
 
     private void GatherInput() {
@@ -48,5 +49,11 @@ public class PlayerController : MonoBehaviour
     private void TargetLock() {
         if (_frameInput.TargetLock)
             _targetLock.Trigger();
+    }
+
+    private void Pause() {
+        if (_frameInput.Pause) {
+            GameManager.instance.PauseGame();
+        }
     }
 }
