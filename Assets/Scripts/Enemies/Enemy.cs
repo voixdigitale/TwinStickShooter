@@ -52,11 +52,11 @@ public abstract class Enemy : MonoBehaviour, IEnemy
         Shooting();
     }
 
-    public void TakeHit(int teamId) {
+    public void TakeHit(int teamId, GameObject hitSource) {
         if (_health.IsInvulnerable) return;
 
         if (teamId != _health.GetTeamId && _flash != null) {
-            Health.OnHit?.Invoke(_health, gameObject.tag);
+            Health.OnHit?.Invoke(_health, gameObject.tag, hitSource);
             _flash.StartFlash();
             _health.EnableInvulnerability();
             StartCoroutine(HitCoroutine(_health.InvulnerabilityDuration));

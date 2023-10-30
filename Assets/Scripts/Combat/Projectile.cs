@@ -33,12 +33,12 @@ public class Projectile : MonoBehaviour, IHitable
         iDamageable?.TakeDamage(_teamId, _damageAmount);
 
         IHitable iHitable = other.gameObject.GetComponent<IHitable>();
-        iHitable?.TakeHit(_teamId);
+        iHitable?.TakeHit(_teamId, gameObject);
 
         _shooting.ReleaseProjectileFromPool(this);
     }
 
-    public void TakeHit(int teamId) {
-        Health.OnHit?.Invoke(_health, gameObject.tag);
+    public void TakeHit(int teamId, GameObject hitSource) {
+        Health.OnHit?.Invoke(_health, gameObject.tag, hitSource);
     }
 }

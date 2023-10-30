@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6278025893713673650}
   - component: {fileID: 1114270674858560996}
   - component: {fileID: 4132357429051458500}
+  - component: {fileID: 5729066364815508666}
+  - component: {fileID: 1445832007775096330}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -105,3 +107,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5729066364815508666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470526323614466876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b825d7a3a046c24bb72fce88586e185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1445832007775096330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470526323614466876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02dfa7ccd8fc814a90df5072b248ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathVFXPrefab: {fileID: 0}
+  _hitVFXPrefab: {fileID: 1559539537718133508, guid: f6e1cc70dc03dc34a8f0e5440bc0add0,
+    type: 3}
+  _startingHealth: 4
+  _currentHealth: 0
+  _isInvulnerable: 0
+  _invulnerabilityDuration: 0
+  _teamId: 0

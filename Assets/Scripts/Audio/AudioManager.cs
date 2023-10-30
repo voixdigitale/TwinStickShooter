@@ -115,7 +115,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Health_OnHit(Health sender, string tag) {
+    private void Health_OnHit(Health sender, string tag, GameObject hitSource) {
         switch (tag) {
             case "Player":
                 PlayRandomSound(_soundsCollectionSO.PlayerHit);

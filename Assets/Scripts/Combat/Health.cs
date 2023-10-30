@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     public void DisableInvulnerability() => _isInvulnerable = false;
 
     public static Action<Health, string> OnDeath;
-    public static Action<Health, string> OnHit;
+    public static Action<Health, string, GameObject> OnHit;
 
     [SerializeField] private GameObject _deathVFXPrefab;
     [SerializeField] private GameObject _hitVFXPrefab;

@@ -28,11 +28,11 @@ public class PlayerHitHandler : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeHit(int teamId) {
+    public void TakeHit(int teamId, GameObject hitSource) {
         if (_health.IsInvulnerable) return;
 
         if (teamId != _health.GetTeamId) {
-            Health.OnHit?.Invoke(_health, gameObject.tag);
+            Health.OnHit?.Invoke(_health, gameObject.tag, hitSource);
             TurnBlack();
             _hitVFX.SetActive(true);
             _health.EnableInvulnerability();

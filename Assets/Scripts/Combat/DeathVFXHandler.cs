@@ -27,9 +27,10 @@ public class DeathVFXHandler : MonoBehaviour {
         }
     }
 
-    private void SpawnHitVFX(Health sender, string tag) {
+    private void SpawnHitVFX(Health sender, string tag, GameObject hitSource) {
         if (sender.HitVFXPrefab != null) {
-            GameObject vfxInstance = Instantiate(sender.HitVFXPrefab, sender.transform.position, sender.transform.rotation);
+            Vector3 hitPosition = hitSource.gameObject.GetComponent<Collider>().ClosestPointOnBounds(sender.transform.position);
+            GameObject vfxInstance = Instantiate(sender.HitVFXPrefab, hitPosition, hitSource.transform.rotation);
             StartCoroutine(TagForDestruction(vfxInstance));
         }
     }
