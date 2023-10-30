@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 6727317009228839746}
   - component: {fileID: 950571501264749548}
   - component: {fileID: 3768931594259284437}
+  - component: {fileID: -7441442415323964164}
   m_Layer: 9
   m_Name: Projectile
   m_TagString: Untagged
@@ -296,3 +297,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2581912, y: 0.2233696, z: 0.9199101}
   m_Center: {x: -0.0002810806, y: -0.0026389658, z: 0.50317353}
+--- !u!114 &-7441442415323964164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7101415851507336235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02dfa7ccd8fc814a90df5072b248ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathVFXPrefab: {fileID: 0}
+  _hitVFXPrefab: {fileID: 0}
+  _startingHealth: 4
+  _currentHealth: 0
+  _isInvulnerable: 1
+  _invulnerabilityDuration: 0
+  _teamId: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8073159383723829718}
   - component: {fileID: 8927880640747063219}
   - component: {fileID: 3465754527239289965}
+  - component: {fileID: -2462886535546303288}
   m_Layer: 8
   m_Name: PurpleProjectile
   m_TagString: Untagged
@@ -98,6 +99,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &-2462886535546303288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292587495917738144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02dfa7ccd8fc814a90df5072b248ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathVFXPrefab: {fileID: 0}
+  _hitVFXPrefab: {fileID: 0}
+  _startingHealth: 4
+  _currentHealth: 0
+  _isInvulnerable: 1
+  _invulnerabilityDuration: 0
+  _teamId: 0
 --- !u!1 &1747929936043590880
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,6 @@ public class Shooting : MonoBehaviour
     private bool _isShooting;
     private bool _canShoot = true;
     private Shooting _instance;
-    private int counter = 0;
 
     public int GetTeamId() => _teamId;
 

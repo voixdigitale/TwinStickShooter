@@ -69,6 +69,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FollowerEnemy_OrangeShots
       objectReference: {fileID: 0}
+    - target: {fileID: 8942458577661259239, guid: 190e8f2f2e00bbe46911947eaabddee6,
+        type: 3}
+      propertyPath: _invulnerabilityDuration
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

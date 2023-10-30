@@ -41,6 +41,8 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Spawn() {
         yield return new WaitForSeconds(.4f);
+        if (GameManager.instance.GameIsOver) yield break;
+
         GameObject spawnedEnemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity, _enemyContainer);
         if (_triggersSpawnOnDeath) {
             spawnedEnemy.GetComponent<Health>().SetSpawnOnDeath(_spawnChannel);

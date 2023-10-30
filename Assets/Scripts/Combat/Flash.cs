@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Flash : MonoBehaviour
 {
-    [SerializeField] private float _flashTime = .2f;
     [SerializeField] private float _offSpeed = .02f;
     [SerializeField] private Renderer _objectRenderer;
 

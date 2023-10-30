@@ -53,10 +53,19 @@ public abstract class Enemy : MonoBehaviour, IEnemy
     }
 
     public void TakeHit(int teamId) {
-        if (teamId != _health.GetTeamId) {
+        if (_health.IsInvulnerable) return;
+
+        if (teamId != _health.GetTeamId && _flash != null) {
             Health.OnHit?.Invoke(_health, gameObject.tag);
             _flash.StartFlash();
+            _health.EnableInvulnerability();
+            StartCoroutine(HitCoroutine(_health.InvulnerabilityDuration));
         }
+    }
+
+    private IEnumerator HitCoroutine(float delay) {
+        yield return new WaitForSeconds(delay);
+        _health.DisableInvulnerability();
     }
 
     public void TakeDamage(int teamId, int damageAmount) {
@@ -79,7 +88,7 @@ public abstract class Enemy : MonoBehaviour, IEnemy
 
     private void Health_OnDeath(Health sender, string tag) {
         if (tag == "Player") {
-            _targetLock.ClearTarget();
+            if (_targetLock != null) _targetLock.ClearTarget();
         }
     }
 }

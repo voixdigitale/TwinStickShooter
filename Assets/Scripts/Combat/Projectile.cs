@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IHitable
 {
     [SerializeField] private float _moveSpeed = 10f;
     [SerializeField] private int _damageAmount = 1;
 
     private Rigidbody _rigidBody;
     private Shooting _shooting;
+    private Health _health;
     private int _teamId;
 
     private void Awake() {
         _rigidBody = GetComponent<Rigidbody>();
+        _health = GetComponent<Health>();
     }
 
     private void FixedUpdate() {
@@ -34,5 +36,9 @@ public class Projectile : MonoBehaviour
         iHitable?.TakeHit(_teamId);
 
         _shooting.ReleaseProjectileFromPool(this);
+    }
+
+    public void TakeHit(int teamId) {
+        Health.OnHit?.Invoke(_health, gameObject.tag);
     }
 }

@@ -116,6 +116,11 @@ PrefabInstance:
       propertyPath: _particleTriggerSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2845078885388783641, guid: 95a4a2818ceeb7a488cfd315b60f3b6a,
+        type: 3}
+      propertyPath: _invulnerabilityDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4444652638371273586, guid: 95a4a2818ceeb7a488cfd315b60f3b6a,
         type: 3}
       propertyPath: _startDelay

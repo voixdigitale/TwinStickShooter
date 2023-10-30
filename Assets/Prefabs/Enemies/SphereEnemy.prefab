@@ -201,7 +201,7 @@ MonoBehaviour:
   _startingHealth: 5
   _currentHealth: 0
   _isInvulnerable: 0
-  _invulnerabilityDuration: 0
+  _invulnerabilityDuration: 1
   _teamId: 0
 --- !u!114 &1581434726502975007
 MonoBehaviour:
@@ -236,6 +236,7 @@ MonoBehaviour:
   _distance: {x: 2, y: 0}
   _movementFrequency: {x: 2, y: 0}
   _lookAtPlayer: 1
+  _rotationSpeed: 0
 --- !u!114 &5095264084383909998
 MonoBehaviour:
   m_ObjectHideFlags: 0

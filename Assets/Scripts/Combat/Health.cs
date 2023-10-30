@@ -6,6 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public GameObject DeathVFXPrefab => _deathVFXPrefab;
+    public GameObject HitVFXPrefab => _hitVFXPrefab;
     public int GetTeamId => _teamId;
     public float InvulnerabilityDuration => _invulnerabilityDuration;
     public bool IsInvulnerable => _isInvulnerable;
@@ -19,6 +20,7 @@ public class Health : MonoBehaviour
     public static Action<Health, string> OnHit;
 
     [SerializeField] private GameObject _deathVFXPrefab;
+    [SerializeField] private GameObject _hitVFXPrefab;
     [SerializeField] private int _startingHealth = 4;
     [SerializeField] private int _currentHealth;
     [SerializeField] private bool _isInvulnerable = false;

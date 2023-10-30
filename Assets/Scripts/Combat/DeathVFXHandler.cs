@@ -4,25 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DeathVFXHandler : MonoBehaviour
-{
+public class DeathVFXHandler : MonoBehaviour {
     [SerializeField] GamepadManager _gamepadManager;
 
-     private void OnEnable() {
+    private void OnEnable() {
         Health.OnDeath += SpawnDeathVFX;
+        Health.OnHit += SpawnHitVFX;
     }
 
     private void OnDisable() {
         Health.OnDeath -= SpawnDeathVFX;
+        Health.OnHit -= SpawnHitVFX;
     }
 
     private void SpawnDeathVFX(Health sender, string tag) {
-        Instantiate(sender.DeathVFXPrefab, sender.transform.position, sender.transform.rotation);
+        GameObject vfxInstance = Instantiate(sender.DeathVFXPrefab, sender.transform.position, sender.transform.rotation);
+        StartCoroutine(TagForDestruction(vfxInstance));
         CinemachineImpulseSource _shakeImpulse = sender.DeathVFXPrefab.GetComponent<CinemachineImpulseSource>();
-        if (_shakeImpulse != null ) {
+        if (_shakeImpulse != null) {
             _shakeImpulse.GenerateImpulse();
             _gamepadManager.Vibrate();
         }
+    }
 
+    private void SpawnHitVFX(Health sender, string tag) {
+        if (sender.HitVFXPrefab != null) {
+            GameObject vfxInstance = Instantiate(sender.HitVFXPrefab, sender.transform.position, sender.transform.rotation);
+            StartCoroutine(TagForDestruction(vfxInstance));
+        }
+    }
+
+    private IEnumerator TagForDestruction(GameObject tag) {
+        yield return new WaitForSeconds(1);
+        Destroy(tag);
     }
 }
