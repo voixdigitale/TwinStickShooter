@@ -28,7 +28,8 @@ public class MagicWall : MonoBehaviour
     }
 
     private IEnumerator Disappear() {
-        Instantiate(_disappearVFX, transform.position, transform.rotation, transform);
+        GameObject disappearVFX = Instantiate(_disappearVFX, transform.position, transform.rotation, transform);
+        disappearVFX.transform.localScale = transform.localScale;
         yield return new WaitForSeconds(.1f);
         StartCoroutine(TagForDestruction());
     }

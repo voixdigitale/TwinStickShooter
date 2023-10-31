@@ -198,6 +198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathVFXPrefab: {fileID: 1128771400534737002, guid: d05f7d778f4bc774186b8eb2cccdf4b9,
     type: 3}
+  _hitVFXPrefab: {fileID: 5315669897318175306, guid: cd7c6d0f75d83f646952d9691cd3ccf3,
+    type: 3}
   _startingHealth: 5
   _currentHealth: 0
   _isInvulnerable: 0
@@ -215,7 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f406c0a2fc83cb4f8ac858e1c6d61dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flashTime: 0.2
   _offSpeed: 0.02
   _objectRenderer: {fileID: 5034800840775007838}
 --- !u!114 &4444652638371273586

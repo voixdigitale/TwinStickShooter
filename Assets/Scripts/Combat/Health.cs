@@ -55,6 +55,8 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
             if (gameObject.CompareTag("Player")) {
                 GameManager.instance.GameOver();
+            } else if (gameObject.name == "BossRotatingSphere2Colors(Clone)") {
+                GameManager.instance.Victory();
             }
         }
     }

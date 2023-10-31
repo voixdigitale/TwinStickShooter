@@ -119,5 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkPointChannel: 0
+  _checkPointsNeeded: 1
   _disappearVFX: {fileID: 1987486907592963614, guid: 58b82097288475746bbe3b53ee9b2328,
     type: 3}

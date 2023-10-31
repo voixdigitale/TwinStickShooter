@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     private PauseMenu _pauseMenu;
     private GameOverMenu _gameOverMenu;
+    private VictoryMenu _victoryMenu;
 
     private void Awake() {
         if (instance != null && instance != this) {
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
 
         _pauseMenu = GetComponent<PauseMenu>();
         _gameOverMenu = GetComponent<GameOverMenu>();
+        _victoryMenu = GetComponent<VictoryMenu>();
     }
 
     private void Start() {
@@ -33,5 +35,10 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         GameIsOver = true;
         _gameOverMenu.GameOver();
+    }
+
+    public void Victory() {
+        GameIsOver = true;
+        _victoryMenu.Victory();
     }
 }
